@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="stock" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="510b5b57-3d36-4add-9ecf-77cf1d024479">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="jasper/connection.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select p.codigo,p.nome,c.nome Categoria,p.medida,u.nome UM,s.qty,s.preco_compra  Compra,s.preco_venda Venda
+from swing_simafa.tbl_stock s
+inner join swing_simafa.tbl_producto p on s.id_producto= p.id
+inner join swing_simafa.tbl_categoria c on p.id_categoria=c.id 
+inner join swing_simafa.tbl_unidade_medida u on p.id_unidade_medida=u.id
+where s.qty<=s.min
+order by p.codigo]]>
+	</queryString>
+	<field name="codigo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_producto"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_producto"/>
+	</field>
+	<field name="Categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="Categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_categoria"/>
+	</field>
+	<field name="medida" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="medida"/>
+		<property name="com.jaspersoft.studio.field.label" value="medida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_producto"/>
+	</field>
+	<field name="UM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="UM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_unidade_medida"/>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_stock"/>
+	</field>
+	<field name="Compra" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="preco_compra"/>
+		<property name="com.jaspersoft.studio.field.label" value="Compra"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_stock"/>
+	</field>
+	<field name="Venda" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="preco_venda"/>
+		<property name="com.jaspersoft.studio.field.label" value="Venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_stock"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="535" height="40" uuid="1ad8511d-e4c5-4286-84f8-361ffef4a8f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatorio de Stock Abaixo do Nivel]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="72" height="20" uuid="b7a932ae-a5a2-4e8e-b41e-51181b798865">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a694a6de-d1db-4ff6-9397-d62c778e8950"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="-2" width="119" height="22" uuid="b2f73617-a79f-40c1-9fbb-926c5742187c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ddb34f1-5f34-4bce-b540-16f9edb15cd6"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Artigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="0" width="69" height="20" uuid="4b119d7e-d5fe-4e76-a372-cb9ba4cdb558">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="39a040a0-b8ae-44a1-9cb7-d1cc1e54965f"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="30" height="20" uuid="68ed7489-8769-4112-b6c1-bab938e83bab">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="26c37c9c-6061-4a8a-82be-8afa572e40ce"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="0" width="50" height="20" uuid="9598e57a-417f-47e9-90df-2cb2168229b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8431da8-f34c-459d-92f0-9b76e4b306ad"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="0" width="62" height="20" uuid="3c610427-9ad0-4526-9757-231f551d4c92">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f2b4a2f7-ce52-40b4-bdd4-5c96a5385048"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="0" width="63" height="20" uuid="e8703465-83af-44de-a08b-845342494aba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="96f23870-e156-403b-9adb-6893342cb866"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="0" width="58" height="20" uuid="716c4697-8f03-4818-b73f-d01c8496eb59">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a5faf76f-2725-497a-817e-b052182e10d4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Venda]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="72" height="20" uuid="64edb058-5a56-42bc-91b1-876030ca2537">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a694a6de-d1db-4ff6-9397-d62c778e8950"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="-2" width="119" height="22" uuid="8fe6cbb2-3b90-4f73-8f0c-7b475616e52a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ddb34f1-5f34-4bce-b540-16f9edb15cd6"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="0" width="69" height="20" uuid="07f0833b-7e79-4f43-a6a8-7c647622698d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="39a040a0-b8ae-44a1-9cb7-d1cc1e54965f"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Categoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="30" height="20" uuid="45467262-f6fa-458e-8d3d-678b6c319633">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="26c37c9c-6061-4a8a-82be-8afa572e40ce"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="50" height="20" uuid="4c759274-b594-429f-bf84-34abc10ea34b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8431da8-f34c-459d-92f0-9b76e4b306ad"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="0" width="62" height="20" uuid="22073ef8-5613-45f9-99a0-3e6382560877">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f2b4a2f7-ce52-40b4-bdd4-5c96a5385048"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="0" width="63" height="20" uuid="c227d880-2337-4f2c-9abf-e4caca535b9d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="96f23870-e156-403b-9adb-6893342cb866"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Compra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="0" width="58" height="20" uuid="1c98396c-880a-4d21-90cb-d9250af078fc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a5faf76f-2725-497a-817e-b052182e10d4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Venda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

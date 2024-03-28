@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pedidos" pageWidth="595" pageHeight="842" columnWidth="525" leftMargin="40" rightMargin="30" topMargin="20" bottomMargin="20" uuid="d96b8c70-3296-4343-a145-10ab389754df">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="jasper/connection.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="DATA_FINAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{created}.toLocalDate()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATA_INICIO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{created}.getYear()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT c.nome Cliente,p.sub_total,p.total,
+	p.created,u.username
+FROM swing_simafa.tbl_pedido p
+INNER JOIN swing_simafa.tbl_cliente c ON 
+	 p.id_cliente = c.id
+	 inner join swing_simafa.tbl_utilizador  u on p.id_utilizador=u.id
+	 WHERE p.created between $P{DATA_INICIO} and 
+	 $P{DATA_FINAL}]]>
+	</queryString>
+	<field name="Cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_cliente"/>
+	</field>
+	<field name="sub_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="sub_total"/>
+		<property name="com.jaspersoft.studio.field.label" value="sub_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pedido"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total"/>
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pedido"/>
+	</field>
+	<field name="created" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="created"/>
+		<property name="com.jaspersoft.studio.field.label" value="created"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pedido"/>
+	</field>
+	<field name="username" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="username"/>
+		<property name="com.jaspersoft.studio.field.label" value="username"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_utilizador"/>
+	</field>
+	<variable name="total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<staticText>
+				<reportElement x="0" y="0" width="525" height="58" uuid="676497e8-a6ec-4f93-9ef3-32d5d3b21fed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Abyssinica SIL" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatorio de Venda]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<staticText>
+				<reportElement x="0" y="0" width="105" height="23" uuid="7f3e02c9-8468-45a5-9bbc-0816038815a1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b199332d-4248-4692-a058-c5557085e083"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="105" height="23" uuid="e2f6f3d1-5f86-4652-b5da-4206a8585ed8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eae6b54b-7aa2-4818-98e9-edbcb6ed3b10"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="105" height="23" uuid="043a329a-9395-4df8-825f-47f0b63bdc6d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e904a2a1-b241-4609-9f4d-8467650524fd"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="0" width="105" height="23" uuid="c5cc9f84-fcac-4cae-b87e-1a75f731679e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9aba637-9d65-4e73-a8db-1b0e3eb58a1a"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="0" width="105" height="23" uuid="4787776e-4565-42cb-a1f9-380fa3b545bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7e205229-e4ed-4275-9bf6-6caad18aa858"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<text><![CDATA[Utilizador]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<textField>
+				<reportElement x="0" y="0" width="105" height="21" backcolor="#FF9999" uuid="f6675efd-e3f3-4fac-a392-9460fa008739">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b199332d-4248-4692-a058-c5557085e083"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="0" width="105" height="21" backcolor="#FF9999" uuid="07ba5113-eaee-4a16-8ba2-a9c3d3f53522">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eae6b54b-7aa2-4818-98e9-edbcb6ed3b10"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sub_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="0" width="105" height="21" backcolor="#FF9999" uuid="84957864-296c-409e-93a5-f048f10595ec">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e904a2a1-b241-4609-9f4d-8467650524fd"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="0" width="105" height="21" backcolor="#FF9999" uuid="47d957d3-d1b8-49b8-8bd5-98728643382c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9aba637-9d65-4e73-a8db-1b0e3eb58a1a"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{created}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="105" height="21" backcolor="#FF9999" uuid="993bddb7-80ea-4002-bf07-25a3325c018e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7e205229-e4ed-4275-9bf6-6caad18aa858"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Georgia" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement key="" x="190" y="0" width="125" height="30" forecolor="#FF3300" uuid="6d809b9b-1fc9-4d63-8028-1e910e921b45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
