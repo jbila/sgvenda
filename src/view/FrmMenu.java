@@ -114,7 +114,7 @@ public class FrmMenu extends JFrame {
 		mntmCliente.setIcon(new ImageIcon(FrmMenu.class.getResource("/resources/user.png")));
 		mntmCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FrmCliente2.main(null);
+				FrmCliente.main(null);
 			}
 		});
 		mnVenda.add(mntmCliente);

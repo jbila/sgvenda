@@ -12,6 +12,9 @@ public class Role extends AbstractEntity {
 	private String nome;
 	public Role() {
 	}
+        
+        public Role(String nome) {
+	}
 
 	public String getNome() {
 		return nome;

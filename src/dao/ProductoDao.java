@@ -103,6 +103,12 @@ public class ProductoDao implements GenericDao<Producto> {
         return query.getResultList();
     }
 
+
+public Long count() {
+    TypedQuery<Long> query = entityManager.createQuery("SELECT COUNT(p) FROM Producto p", Long.class);
+    return query.getSingleResult();
+}
+
     public Optional<Producto> findByCodigo(String codigo) {
         try {
             TypedQuery<Producto> query = entityManager.createQuery("SELECT p FROM Producto p WHERE p.codigo = :codigo",

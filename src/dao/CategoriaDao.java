@@ -75,5 +75,10 @@ public class CategoriaDao implements GenericDao<Categoria> {
 		query.setParameter("empresaId", empresaId);
 		return query.getResultList();
 	}
+        
+        public Long count() {
+    TypedQuery<Long> query = entityManager.createQuery("SELECT COUNT(c) FROM Categoria c", Long.class);
+    return query.getSingleResult();
+}
 
 }

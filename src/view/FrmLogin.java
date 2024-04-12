@@ -30,7 +30,7 @@ public class FrmLogin {
     private String username, password;
     private JLabel lblLogado;
     public static Long idUsuario = 0L;// it will be used in other class
-    private String status = "inactivo";
+    private String status = "INACTIVO";
     public static String perfil = "s";
     public static double iva = 0;
     public static Empresa empresa = null;
@@ -146,7 +146,7 @@ public class FrmLogin {
                         userName = utilizador.get().getUsername() + " Perfil: " + utilizador.get().getRole().getNome();
 
                         // when logged as Admin
-                        if (perfil.equalsIgnoreCase("administrador") && (status.equalsIgnoreCase("Activo"))
+                        if (perfil.equalsIgnoreCase("ADMIN") && (status.equalsIgnoreCase("ACTIVO"))
                                 && password.equals(txtPassword.getText())) {
                             lblLogado.setText("Succesfully Logged");
                             lblLogado.setForeground(Color.GREEN);
@@ -161,7 +161,7 @@ public class FrmLogin {
 
                         }
                         // When is a Standard
-                        if (perfil.equalsIgnoreCase("NORMAL") && (status.equalsIgnoreCase("Activo"))
+                        if (perfil.equalsIgnoreCase("NORMAL") && (status.equalsIgnoreCase("ACTIVO"))
                                 && password.equals(txtPassword.getText())) {
 
                             lblLogado.setForeground(Color.GREEN);

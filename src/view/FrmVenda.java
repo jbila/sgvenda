@@ -30,7 +30,7 @@ import com.meldev.dao.ClienteDao;
 import com.meldev.dao.DocumentoDao;
 import com.meldev.dao.ItemsPedidoDao;
 import com.meldev.dao.PedidoDao;
-import com.meldev.dao.StockDao;
+import dao.StockDao;
 import com.meldev.model.Cliente;
 import com.meldev.model.Documento;
 import com.meldev.model.Empresa;
@@ -444,7 +444,7 @@ public class FrmVenda extends JFrame {
 
 	}
 
-	/*-------------------------------------------*/
+	/*------------------------------------------------------------------------------------------------------------------------------------------*/
 	private void fillArtigo(String codigo) {
 		Optional<Stock> stockOptional = stockDao.findByProductoCodigo(codigo);
 		if (stockOptional.isPresent()) {
@@ -467,7 +467,7 @@ public class FrmVenda extends JFrame {
 
 	}
 
-	/*-------------------------------------------*/
+	/*-------------------------------------------------------------------------------------------------------------------------------------------*/
 	/**/
 
 	private void addRow() {
@@ -497,7 +497,7 @@ public class FrmVenda extends JFrame {
 			if (!idArtigoExists && !(descricao.isEmpty() && subTotal.isEmpty() && venda.isEmpty() && qty.isEmpty()
 					&& idArtigo.isEmpty())) {
 				// Create an array to hold the data
-
+                                                                    
 				Object[] rowData = { idArtigo, artigo, descricao, qty, venda, subTotal };
 				if (!qty.isEmpty())
 					model.addRow(rowData);
@@ -506,6 +506,7 @@ public class FrmVenda extends JFrame {
 
 				txtTotal.setText(total + "");
 				txtSubTotal_venda.setText(total + "");
+                                                                 
 			} else
 				JOptionPane.showMessageDialog(table, "Producto existente");
 			/* DEPOIS DE ADICIONAR A LINHA */

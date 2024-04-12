@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import com.meldev.model.Empresa;
 import com.meldev.utils.JpaUtil;
+import javax.persistence.Query;
 
 public class EmpresaDao implements GenericDao<Empresa> {
 
@@ -97,5 +98,14 @@ public class EmpresaDao implements GenericDao<Empresa> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+   public long count() {
+        Query query = entityManager.createQuery("SELECT COUNT(e) FROM Empresa e");
+        return (long) query.getSingleResult();
+    }
+
+     public Empresa findById(long id) {
+        return entityManager.find(Empresa.class, id);
+    }
 
 }

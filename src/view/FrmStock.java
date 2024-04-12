@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.meldev.dao.FornecedorDao;
 import com.meldev.dao.ProductoDao;
-import com.meldev.dao.StockDao;
+import dao.StockDao;
 import com.meldev.model.Empresa;
 import com.meldev.model.Fornecedor;
 import model.Producto;

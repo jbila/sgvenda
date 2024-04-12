@@ -91,7 +91,7 @@ public class UtilizadorDao implements GenericDao<Utilizador> {
 		return resultList.isEmpty() ? null : resultList.get(0);
 	}
 
-	public long count() {
+	public Long count() {
 		return entityManager.createQuery("SELECT COUNT(u) FROM Utilizador u", Long.class).getSingleResult();
 	}
 

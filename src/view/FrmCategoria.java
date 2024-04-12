@@ -44,7 +44,7 @@ public class FrmCategoria extends JFrame {
                 try {
                     FrmCategoria frame = new FrmCategoria();
                     frame.setVisible(true);
-                    frame.setLocationRelativeTo(null);
+                   // frame.setLocationRelativeTo(null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

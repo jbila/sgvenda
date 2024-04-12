@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import com.meldev.model.Fornecedor;
 import com.meldev.utils.JpaUtil;
+import javax.persistence.Query;
 
 public class FornecedorDao implements GenericDao<Fornecedor> {
 
@@ -78,4 +79,9 @@ public class FornecedorDao implements GenericDao<Fornecedor> {
 		query.setParameter("id", id);
 		return query.getSingleResult();
 	}
+
+  public long count() {
+        Query query = entityManager.createQuery("SELECT COUNT(f) FROM Fornecedor f");
+        return (long) query.getSingleResult();
+    }
 }

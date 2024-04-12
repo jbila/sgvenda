@@ -31,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import com.meldev.dao.CategoriaDao;
 import com.meldev.dao.FornecedorDao;
 import com.meldev.dao.ProductoDao;
-import com.meldev.dao.StockDao;
+import dao.StockDao;
 import com.meldev.dao.UnidadeDeMedidaDao;
 import com.meldev.model.Categoria;
 import com.meldev.model.Empresa;
@@ -341,7 +341,6 @@ public class FrmProducto extends JFrame {
             String ID = txtId.getText();
             String nome = txtNome.getText();
             if (!nome.isEmpty()) {
-
                 Categoria categoria = (Categoria) cboCategoria.getSelectedItem();
                 UnidadeDeMedida unidadeDeMedida = (UnidadeDeMedida) cboUnidadeDeMedica.getSelectedItem();
                 producto.setCodigo(txtCodigo.getText());
@@ -349,7 +348,7 @@ public class FrmProducto extends JFrame {
                 producto.setDescricao(txtDescricao.getText());
                 producto.setCategoria(categoria);
                 producto.setUnidadeDeMedida(unidadeDeMedida);
-                producto.setMedida(Double.valueOf(txtCapacidade.getText()));
+                producto.setMedida(Double.parseDouble(txtCapacidade.getText()));
 
                 if (ID.equals("")) {
                     producto.setId(null);
@@ -358,10 +357,11 @@ public class FrmProducto extends JFrame {
                 }
 
                 Producto c = productoDao.save(producto);
-                saveStock(producto);
+                  JOptionPane.showMessageDialog(rootPane, c.getNome() + " Registado com exito");
+               
+                saveStock(c);
                 showproducto();
                 clear();
-                JOptionPane.showMessageDialog(rootPane, c.getNome() + " Registado com exito");
 
             } else {
                 JOptionPane.showMessageDialog(null, "Introduza o Nome");
@@ -389,7 +389,7 @@ public class FrmProducto extends JFrame {
                 producto.setDescricao(txtDescricao.getText());
                 producto.setCategoria(categoria);
                 producto.setUnidadeDeMedida(unidadeDeMedida);
-                producto.setMedida(Double.valueOf(txtCapacidade.getText()));
+                producto.setMedida(Double.parseDouble(txtCapacidade.getText()));
 
                 if (ID.equals("")) {
                     producto.setId(null);
@@ -419,14 +419,13 @@ public class FrmProducto extends JFrame {
         stock.setPrecoCompra(0);
         stock.setPrecoVenda(0);
         stock.setQty(0);
-        Fornecedor fornecedor = fornecedorDao.findById(2L);
+        Fornecedor fornecedor = fornecedorDao.findById(1L);
         stock.setFornecedor(fornecedor);
         stock.setMax(0);
         stock.setMin(0);
         stock.setValidade("" + LocalDate.now().plusDays(30L));
         stock.setProducto(producto);
         stock.setEmpresa(empresa);
-        System.out.println("STOCK " + producto.toString());
         stockDao.save(stock);
     }
 

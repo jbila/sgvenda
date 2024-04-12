@@ -13,7 +13,7 @@
 <property name="hibernate.hbm2ddl.auto" value="update"/>
 <property name="hibernate.format_sql" value="true"/>
 <property name="showsql" value="true"/>
-<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/swing_simafa?serverTimezone=UTC"/>
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sgvenda_desktop?serverTimezone=UTC"/>
 <!--194.163.144.117-->
 <property name="javax.persistence.jdbc.user" value="jbila"/>
 <property name="javax.persistence.jdbc.password" value="@MellannieBila1069@"/>

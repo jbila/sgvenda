@@ -115,5 +115,8 @@ public class PedidoDao implements GenericDao<Pedido> {
 			transaction.commit();
 		}
 	}
+        public long count() {
+		return entityManager.createQuery("SELECT COUNT(p) FROM Pedido p", Long.class).getSingleResult();
+	}
 
 }

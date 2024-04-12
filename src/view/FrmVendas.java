@@ -47,7 +47,7 @@ public class FrmVendas extends JFrame {
 	private JTextField txtTotal;
 	private JTextField txtDesconto;
 	private PedidoDao pedidoDao;
-	private ItemsPedidoDao itemsPedidoDao;
+	private final ItemsPedidoDao itemsPedidoDao;
 	private JTable tableDetalhes;
 	private String date1, date2;
 	private Empresa empresa=null;
@@ -220,12 +220,12 @@ public class FrmVendas extends JFrame {
 		scrollPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showConfirmDialog(scrollPane, "sim");
+				//JOptionPane.showConfirmDialog(null, "sim");
 				int selectedRow = table.getSelectedRow();
 				if (selectedRow >= 0) {
 					Object idPedidoObj = table.getValueAt(selectedRow, 0);
 					Long pedido = Long.valueOf(idPedidoObj.toString());
-					System.out.println(pedido);
+				
 					showItemsPedido(pedido);
 				}
 

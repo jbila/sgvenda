@@ -1,5 +1,6 @@
-package com.meldev.dao;
+package dao;
 
+import com.meldev.dao.GenericDao;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,11 +8,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 
 import com.meldev.model.ItemsPedidos;
 import com.meldev.model.Stock;
 import com.meldev.utils.JpaUtil;
+import javax.transaction.Transactional;
 
 public class StockDao implements GenericDao<Stock> {
 
@@ -127,5 +128,14 @@ public class StockDao implements GenericDao<Stock> {
 		} catch (NoResultException e) {
 			return Optional.empty();
 		}
+	}
+           public long count() {
+		return entityManager.createQuery("SELECT COUNT(s) FROM Stock s", Long.class).getSingleResult();
+	}
+             public long getBaixoStock() {
+		return entityManager.createQuery("SELECT COUNT( s) FROM Stock s WHERE s.qty < s.min ", Long.class).getSingleResult();
+	}
+              public long getSockExpirados() {
+		return entityManager.createQuery("SELECT COUNT(s) FROM Stock s WHERE s.validade < CURRENT_DATE ", Long.class).getSingleResult();
 	}
 }

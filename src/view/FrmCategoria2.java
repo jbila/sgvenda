@@ -83,6 +83,8 @@ public class FrmCategoria2 extends javax.swing.JFrame {
         txtDescricao.setPreferredSize(new java.awt.Dimension(85, 30));
         getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 640, -1));
 
+        txtId.setEditable(false);
+        txtId.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
         txtId.setPreferredSize(new java.awt.Dimension(85, 30));
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 640, -1));
 
@@ -275,7 +277,7 @@ public class FrmCategoria2 extends javax.swing.JFrame {
             public void run() {
            FrmCategoria2    frame= new  FrmCategoria2();
                    frame .setVisible(true);
-                   frame.setLocationRelativeTo(null);
+                  frame.setLocationRelativeTo(null);
             }
         });
     }
