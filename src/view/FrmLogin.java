@@ -152,7 +152,7 @@ public class FrmLogin {
                             lblLogado.setForeground(Color.GREEN);
                             txtUsername.setText(null);
                             txtPassword.setText(null);
-                            FrmMenu.main(null); // CHAMA O FORMULARIO DE MENU
+                            FrmMenu2.main(null); // CHAMA O FORMULARIO DE MENU
                             frmLogin.dispose();
 
                         } else {
@@ -168,21 +168,21 @@ public class FrmLogin {
                             lblLogado.setText("Succesfully Logged");
                             txtUsername.setText(null);
                             txtPassword.setText(null);
-                            FrmMenu.main(null); // CHAMA O FORMULARIO DE MENU
+                            FrmMenu2.main(null); // CHAMA O FORMULARIO DE MENU
                             frmLogin.dispose();
                         } else {
                             lblLogado.setText("Utilizador Inactivo Ou senha Incorrenta");
                             lblLogado.setForeground(Color.BLUE);
                         }
 
-                        if (perfil.equalsIgnoreCase("VENDA") && (status.equalsIgnoreCase("Activo"))
+                        if (perfil.equalsIgnoreCase("VENDA") && (status.equalsIgnoreCase("ACTIVO"))
                                 && password.equals(txtPassword.getText())) {
 
                             lblLogado.setForeground(Color.GREEN);
                             lblLogado.setText("Succesfully Logged");
                             txtUsername.setText(null);
                             txtPassword.setText(null);
-                            FrmMenu.main(null); // CHAMA O FORMULARIO DE MENU
+                            FrmMenu2.main(null); // CHAMA O FORMULARIO DE MENU
                             frmLogin.dispose();
                         } else {
                             lblLogado.setText("Utilizador Inactivo Ou senha Incorrenta");

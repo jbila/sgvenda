@@ -63,6 +63,7 @@ public class FrmVendas extends JFrame {
 				try {
 					FrmVendas frame = new FrmVendas();
 					frame.setLocationRelativeTo(null);
+                                          frame.setResizable(false);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

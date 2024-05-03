@@ -277,6 +277,7 @@ public class FrmCategoria2 extends javax.swing.JFrame {
             public void run() {
            FrmCategoria2    frame= new  FrmCategoria2();
                    frame .setVisible(true);
+                     frame.setResizable(false);
                   frame.setLocationRelativeTo(null);
             }
         });
